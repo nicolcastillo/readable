@@ -14,6 +14,7 @@ def skip(string_val, line, src):
 def from_form():
     src = open("read.txt", 'r')
     line = src.readline()
+    
     for _ in range(4):
         while line != "=============================\n":
             line = src.readline()
@@ -83,13 +84,14 @@ def from_third_party():
         else:
             chungus.append(line[2::].replace('\n', ''))
 
-        line = src.readline()k
+        line = src.readline()
 
     clean_chung = ""
     for _ in chungus:
         clean_chung += _ + '\n'
 
     issue['query'] = clean_chung
+    src.close()
 
 
 def read_file(var):
@@ -101,6 +103,12 @@ def read_file(var):
 
 
 if __name__ == '__main__':
+
+    if len(sys.argv) != 2:
+        print("wrongly executed")
+        print("correct should be:\n$ python readable.py <1/2>\nnumber represents version of the text\n1 - direct from form\n2-from third party")
+        exit(1)
+
     read_file(sys.argv[1])
 
     # print(issue)
